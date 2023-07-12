@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+</head>
+<form>
+    <label for="femail">Email</label>
+    <input id="femail" placeholder="ex ab@gmail.com" type="email" required>
+    <label for="fpassword">Password</label>
+    <input id="fpassword"  placeholder="********" type="password" required> 
+    </br>
+    </br>
+    <input value="Daftar/Masuk" type="submit">
+</form>
+</body>
+<script>
+    const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const emailInput = document.getElementById('femail');
+            const passwordInput = document.getElementById('fpassword');
+            
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (validateEmail(email) && validatePassword(password)) {
+                alert('Email dan password Benar');
+            } else {
+                alert('Email atau password Salah');
+            }
+        });
+        
+        function validateEmail(email) {
+            const RegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return RegEx.test(email);
+        }
+        
+        function validatePassword(password) {
+            if(password.length < 6){
+            alert('Password kurang dari 6 huruf')
+            return false
+            }
+            return true
+        }
+</script>
+</html>
